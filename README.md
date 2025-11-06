@@ -14,7 +14,7 @@ A web application for managing speaking turns in student council meetings. Stack
 
 ### Getting Started
 
-1. Open `index.html` in any modern web browser
+1. Open `index.html` or visit [https://snigdhapodugu.github.io/8csc-stack/](https://snigdhapodugu.github.io/8csc-stack/) in any modern web browser
 2. The application will automatically load any saved state from previous sessions
 3. All council members are displayed in the left sidebar
 
@@ -25,7 +25,6 @@ A web application for managing speaking turns in student council meetings. Stack
 - Members are automatically ordered by speak count:
   - Lower speak counts appear first
   - Members with the same count are ordered by when they were added
-  - If a member has spoken 2+ times, they are placed at the bottom of their count group
 
 **Response Queue:**
 - Click the **"Response"** button next to a member's name
@@ -111,7 +110,6 @@ The timer is displayed at the top of the page and automatically runs when you cl
 - **Single HTML File**: All code is contained in one file for easy deployment
 - **Vanilla JavaScript**: No external dependencies required
 - **localStorage**: Automatically saves state to browser storage
-- **Responsive Design**: Works on desktop, tablet, and mobile devices
 
 ### Data Persistence
 
