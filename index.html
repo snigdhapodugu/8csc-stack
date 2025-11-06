@@ -23,7 +23,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 400px 1fr;
+            grid-template-columns: 450px 1fr;
             gap: 20px;
             height: calc(100vh - 50px);
         }
@@ -76,6 +76,33 @@
             margin-bottom: 15px;
             color: #6D28D9;
             font-weight: 600;
+        }
+
+        .member-filter {
+            margin-bottom: 15px;
+        }
+
+        .member-filter select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #6D28D9;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .member-filter select:hover {
+            border-color: #8B5CF6;
+        }
+
+        .member-filter select:focus {
+            outline: none;
+            border-color: #6D28D9;
+            box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
         }
 
         .member-list {
@@ -651,6 +678,17 @@
         <!-- Member Roster Sidebar -->
         <div class="sidebar">
             <h2>Members</h2>
+            <div class="member-filter">
+                <select id="memberFilter">
+                    <option value="all">All Members</option>
+                    <option value="core">CORE</option>
+                    <option value="asn">ASN</option>
+                    <option value="cpp">CPP</option>
+                    <option value="finance">Finance</option>
+                    <option value="soa">SOA</option>
+                    <option value="tac">TAC</option>
+                </select>
+            </div>
             <div class="member-list" id="memberList"></div>
         </div>
 
@@ -728,6 +766,18 @@
             { name: "Svetlana", speakCount: 0 },
             { name: "Ximena", speakCount: 0 }
         ];
+
+        // Member groups - easily editable
+        const memberGroups = {
+            "core": ["Aidan", "Rachel", "Hailey", "Robert", "Snigdha"],
+            "asn": ["Hailey", "Alyssa", "Ryn", "Aditi", "Holly"],
+            "cpp": ["Rachel", "Kavya", "Gabriela", "Melany", "Evangelina"],
+            "finance": ["Snigdha", "Devin", "Ariel", "Carina", "Lucia"],
+            "soa": ["Aidan", "Anna", "Juliet", "Ximena", "Erica"],
+            "tac": ["Robert", "Clytie", "Katherine", "Svetlana", "Brigette"]
+        };
+
+        let selectedFilter = "all";
 
 
         let stack = [];
@@ -808,6 +858,12 @@
 
             // Notification close button
             document.getElementById('notificationClose').addEventListener('click', hideNotification);
+
+            // Member filter
+            document.getElementById('memberFilter').addEventListener('change', (e) => {
+                selectedFilter = e.target.value;
+                renderMembers();
+            });
         }
 
         // Render member list
@@ -815,7 +871,14 @@
             const container = document.getElementById('memberList');
             container.innerHTML = '';
 
-            members.forEach((member, index) => {
+            // Filter members based on selected filter
+            let filteredMembers = members;
+            if (selectedFilter !== "all" && memberGroups[selectedFilter]) {
+                const groupNames = memberGroups[selectedFilter];
+                filteredMembers = members.filter(member => groupNames.includes(member.name));
+            }
+
+            filteredMembers.forEach((member, index) => {
                 const card = document.createElement('div');
                 card.className = 'member-card';
 
