@@ -1,4 +1,4 @@
-# Stack Keeper
+# Stack Facilitation
 
 A web application for managing speaking turns in student council meetings. Stack Keeper helps facilitate orderly discussions by tracking who has spoken, managing the speaking queue, and enforcing time limits.
 
