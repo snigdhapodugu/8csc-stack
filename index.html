@@ -864,6 +864,29 @@
                 selectedFilter = e.target.value;
                 renderMembers();
             });
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                // Don't trigger shortcuts if user is typing in an input field
+                const activeElement = document.activeElement;
+                const isTyping = activeElement.tagName === 'INPUT' || 
+                                activeElement.tagName === 'TEXTAREA' || 
+                                activeElement.isContentEditable;
+                
+                if (isTyping) return;
+
+                // Enter key → Next Speaker
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    nextSpeaker();
+                }
+                
+                // Down arrow key → Next Response
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    nextResponse();
+                }
+            });
         }
 
         // Render member list
