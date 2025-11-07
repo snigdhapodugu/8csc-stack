@@ -67,19 +67,20 @@
         .sidebar {
             background: white;
             border-radius: 16px;
-            padding: 20px;
+            padding: 15px;
             overflow-y: auto;
+            max-height: calc(100vh - 200px);
         }
 
         .sidebar h2 {
             font-size: 18px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: #6D28D9;
             font-weight: 600;
         }
 
         .member-filter {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .member-filter select {
@@ -106,21 +107,21 @@
         }
 
         .member-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
         }
 
         .member-card {
             background: #8B5CF6;
             color: white;
-            padding: 15px 15px;
-            border-radius: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 6px;
             transition: all 0.3s ease;
-            min-height: 50px;
+            min-height: auto;
         }
 
         .member-card:hover {
@@ -130,14 +131,15 @@
         .member-info {
             display: flex;
             align-items: center;
-            gap: 16px;
+            justify-content: space-between;
+            gap: 8px;
             flex: 1;
             min-width: 0;
         }
 
         .member-name {
             font-weight: 600;
-            font-size: 16px;
+            font-size: 14px;
             flex: 1;
             min-width: 0;
             word-wrap: break-word;
@@ -145,9 +147,9 @@
 
         .speak-count-badge {
             background: rgba(255, 255, 255, 0.3);
-            padding: 6px 10px;
-            border-radius: 10px;
-            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 10px;
             font-weight: 600;
             flex-shrink: 0;
             line-height: 1;
@@ -160,21 +162,22 @@
 
         .member-actions {
             display: flex;
-            gap: 10px;
+            gap: 6px;
             align-items: center;
             flex-shrink: 0;
-            margin-left: 10px;
+            width: 100%;
         }
 
         .btn-small {
-            padding: 6px 10px;
+            padding: 5px 8px;
             border: none;
-            border-radius: 8px;
-            font-size: 11px;
+            border-radius: 6px;
+            font-size: 10px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
             white-space: nowrap;
+            flex: 1;
         }
 
         .btn-add {
@@ -627,6 +630,7 @@
 
             .sidebar {
                 order: 3;
+                max-height: none;
             }
 
             .main-content {
@@ -644,6 +648,10 @@
             .timer-container {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .member-list {
+                grid-template-columns: 1fr;
             }
         }
 
