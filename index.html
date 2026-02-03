@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stack Faciliation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,9 +15,10 @@
         }
 
         body {
-            font-family: 'Work Sans', sans-serif;
-            background: #F5F3FF;
-            color: #1F2937;
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 25%, #7dd3fc 50%, #38bdf8 75%, #0ea5e9 100%);
+            background-attachment: fixed;
+            color: #0c4a6e;
             min-height: 100vh;
             padding: 10px 10px 40px 10px;
         }
@@ -51,13 +55,13 @@
         .header h1 {
             font-size: 48px;
             font-weight: 700;
-            color: #6D28D9;
+            color: #075985;
             margin: 0;
             line-height: 1.2;
         }
 
         .header p {
-            color: #6B7280;
+            color: #0369a1;
             font-size: 16px;
             margin-top: 2px;
             line-height: 1.2;
@@ -65,17 +69,18 @@
 
         /* Sidebar - Member Roster */
         .sidebar {
-            background: white;
+            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(224,242,254,0.9) 100%);
             border-radius: 16px;
             padding: 15px;
             overflow-y: auto;
             max-height: calc(100vh - 200px);
+            border: 1px solid rgba(14, 165, 233, 0.2);
         }
 
         .sidebar h2 {
             font-size: 18px;
             margin-bottom: 10px;
-            color: #6D28D9;
+            color: #075985;
             font-weight: 600;
         }
 
@@ -86,24 +91,52 @@
         .member-filter select {
             width: 100%;
             padding: 12px;
-            border: 2px solid #E5E7EB;
+            border: 2px solid #7dd3fc;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
-            color: #6D28D9;
-            background: white;
+            color: #0c4a6e;
+            background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .member-filter select:hover {
-            border-color: #8B5CF6;
+            border-color: #0ea5e9;
         }
 
         .member-filter select:focus {
             outline: none;
-            border-color: #6D28D9;
-            box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
+            border-color: #0284c7;
+        }
+
+        .member-search {
+            margin-bottom: 10px;
+        }
+
+        .member-search input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #7dd3fc;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Outfit', sans-serif;
+            color: #0c4a6e;
+            background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+            transition: all 0.2s ease;
+        }
+
+        .member-search input::placeholder {
+            color: #64748b;
+        }
+
+        .member-search input:hover {
+            border-color: #0ea5e9;
+        }
+
+        .member-search input:focus {
+            outline: none;
+            border-color: #0284c7;
         }
 
         .member-list {
@@ -113,7 +146,7 @@
         }
 
         .member-card {
-            background: #8B5CF6;
+            background: linear-gradient(135deg, #0d9488 0%, #0891b2 50%, #0284c7 100%);
             color: white;
             padding: 10px 12px;
             border-radius: 10px;
@@ -125,7 +158,8 @@
         }
 
         .member-card:hover {
-            background: #7C3AED;
+            background: linear-gradient(135deg, #0f766e 0%, #0e7490 50%, #0369a1 100%);
+            transform: translateY(-1px);
         }
 
         .member-info {
@@ -156,7 +190,7 @@
         }
 
         .speak-count-badge.high {
-            background: #EF4444;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
             color: white;
         }
 
@@ -169,6 +203,7 @@
         }
 
         .btn-small {
+            font-family: 'Outfit', sans-serif;
             padding: 5px 8px;
             border: none;
             border-radius: 6px;
@@ -181,22 +216,23 @@
         }
 
         .btn-add {
-            background: white;
-            color: #8B5CF6;
+            background: rgba(255, 255, 255, 0.95);
+            color: #0d9488;
         }
 
         .btn-add:hover {
-            background: #F5F3FF;
+            background: #e0f2fe;
             transform: scale(1.05);
         }
 
         .btn-response {
-            background: #C4B5FD;
+            background: rgba(255, 255, 255, 0.35);
             color: white;
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
         .btn-response:hover {
-            background: #A78BFA;
+            background: rgba(255, 255, 255, 0.5);
             transform: scale(1.05);
         }
 
@@ -210,7 +246,7 @@
         }
 
         .current-speaker {
-            background: #6D28D9;
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 30%, #0891b2 70%, #0d9488 100%);
             color: white;
             padding: 30px;
             border-radius: 16px;
@@ -220,11 +256,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            grid-column: 1;
+            grid-row: 1;
         }
 
         .current-speaker.empty {
-            background: #E5E7EB;
-            color: #6B7280;
+            background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+            color: #475569;
         }
 
         .current-speaker-label {
@@ -247,29 +285,42 @@
         }
 
         .speaker-action-btn {
-            margin-top: 20px;
             width: 100%;
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .response-action-btn {
+            width: 100%;
+            grid-column: 2;
+            grid-row: 2;
         }
 
         .speaker-response-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr auto;
             gap: 20px;
             margin-bottom: 20px;
+            align-items: stretch;
         }
 
         .response-queue {
-            background: white;
+            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(224,242,254,0.85) 100%);
             border-radius: 16px;
             padding: 20px;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            min-height: 200px;
+            grid-column: 2;
+            grid-row: 1;
         }
 
         .response-queue h2 {
             font-size: 18px;
             margin-bottom: 15px;
-            color: #6D28D9;
+            color: #075985;
             font-weight: 600;
         }
 
@@ -282,7 +333,7 @@
         }
 
         .response-item {
-            background: #F59E0B;
+            background: linear-gradient(135deg, #0e7490 0%, #0d9488 50%, #14b8a6 100%);
             color: white;
             padding: 15px 20px;
             border-radius: 12px;
@@ -313,25 +364,21 @@
             font-weight: 600;
         }
 
-        .response-action-btn {
-            margin-top: 15px;
-            width: 100%;
-        }
-
         .stack-section {
-            background: white;
+            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(224,242,254,0.85) 100%);
             border-radius: 16px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             flex: 1;
             min-height: 0;
+            border: 1px solid rgba(14, 165, 233, 0.2);
         }
 
         .stack-section h2 {
             font-size: 18px;
             margin-bottom: 15px;
-            color: #6D28D9;
+            color: #075985;
             font-weight: 600;
         }
 
@@ -352,8 +399,8 @@
         }
 
         .stack-item {
-            background: #A78BFA;
-            color: #1F2937;
+            background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 50%, #0ea5e9 100%);
+            color: #0c4a6e;
             padding: 15px 20px;
             border-radius: 12px;
             display: flex;
@@ -411,8 +458,8 @@
         }
 
         .btn-remove {
-            background: rgba(139, 92, 246, 0.2);
-            color: #6D28D9;
+            background: rgba(12, 74, 110, 0.2);
+            color: #075985;
             border: none;
             padding: 6px 12px;
             border-radius: 8px;
@@ -423,7 +470,7 @@
         }
 
         .btn-remove:hover {
-            background: #8B5CF6;
+            background: #0ea5e9;
             color: white;
         }
 
@@ -435,6 +482,7 @@
         }
 
         .btn {
+            font-family: 'Outfit', sans-serif;
             padding: 12px 20px;
             border: none;
             border-radius: 10px;
@@ -449,30 +497,30 @@
         }
 
         .btn-primary {
-            background: #8B5CF6;
+            background: linear-gradient(135deg, #0891b2 0%, #0284c7 100%);
             color: white;
         }
 
         .btn-primary:hover {
-            background: #7C3AED;
+            background: linear-gradient(135deg, #0e7490 0%, #0369a1 100%);
         }
 
         .btn-danger {
-            background: #A78BFA;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             color: white;
         }
 
         .btn-danger:hover {
-            background: #8B5CF6;
+            background: linear-gradient(135deg, #0284c7 0%, #075985 100%);
         }
 
         .btn-warning {
-            background: #C4B5FD;
+            background: linear-gradient(135deg, #38bdf8 0%, #0d9488 100%);
             color: white;
         }
 
         .btn-warning:hover {
-            background: #A78BFA;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0f766e 100%);
         }
 
         /* Timer - Integrated into header */
@@ -487,7 +535,7 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background: #8B5CF6;
+            background: linear-gradient(135deg, #0d9488 0%, #0891b2 50%, #0284c7 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -496,12 +544,12 @@
         }
 
         .timer-display.warning {
-            background: #F59E0B;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
             animation: pulse 1s infinite;
         }
 
         .timer-display.expired {
-            background: #EF4444;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
             animation: pulse 0.5s infinite;
         }
 
@@ -527,6 +575,7 @@
         }
 
         .btn-timer {
+            font-family: 'Outfit', sans-serif;
             padding: 12px 18px;
             border: none;
             border-radius: 8px;
@@ -537,17 +586,17 @@
         }
 
         .btn-timer-start {
-            background: #10B981;
+            background: linear-gradient(135deg, #0d9488 0%, #059669 100%);
             color: white;
         }
 
         .btn-timer-pause {
-            background: #6B7280;
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
             color: white;
         }
 
         .btn-timer-reset {
-            background: #8B5CF6;
+            background: linear-gradient(135deg, #0891b2 0%, #0284c7 100%);
             color: white;
         }
 
@@ -563,7 +612,7 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #EF4444;
+            background: linear-gradient(135deg, #0284c7 0%, #075985 100%);
             color: white;
             padding: 20px 30px;
             border-radius: 12px;
@@ -639,7 +688,13 @@
 
             .speaker-response-container {
                 grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
             }
+
+            .speaker-response-container .current-speaker { grid-column: 1; grid-row: 1; }
+            .speaker-response-container .response-queue { grid-column: 1; grid-row: 2; }
+            .speaker-response-container .speaker-action-btn { grid-column: 1; grid-row: 3; }
+            .speaker-response-container .response-action-btn { grid-column: 1; grid-row: 4; }
 
             .header {
                 align-items: center;
@@ -658,7 +713,7 @@
         .empty-state {
             text-align: center;
             padding: 40px;
-            color: #9CA3AF;
+            color: #64748b;
             font-style: italic;
         }
     </style>
@@ -697,6 +752,9 @@
                     <option value="tac">TAC</option>
                 </select>
             </div>
+            <div class="member-search">
+                <input type="text" id="memberSearch" placeholder="Search members..." autocomplete="off">
+            </div>
             <div class="member-list" id="memberList"></div>
         </div>
 
@@ -709,7 +767,6 @@
                     <div class="current-speaker-label">Current Speaker</div>
                     <div class="current-speaker-name" id="currentSpeakerName">No one speaking</div>
                     <div class="current-speaker-count" id="currentSpeakerCount"></div>
-                    <button class="btn btn-primary speaker-action-btn" id="nextSpeakerBtn">Next Speaker →</button>
                 </div>
 
                 <!-- Response Queue -->
@@ -718,8 +775,10 @@
                     <div class="response-list" id="responseList">
                         <div class="empty-state">No responses</div>
                     </div>
-                    <button class="btn btn-warning response-action-btn" id="nextResponseBtn">Next Response →</button>
                 </div>
+
+                <button class="btn btn-primary speaker-action-btn" id="nextSpeakerBtn">Next Speaker →</button>
+                <button class="btn btn-warning response-action-btn" id="nextResponseBtn">Next Response →</button>
             </div>
 
             <!-- Regular Stack Queue -->
@@ -752,24 +811,26 @@
             { name: "Alyssa", speakCount: 0 },
             { name: "Anna💅👑", speakCount: 0 },
             { name: "Ariel", speakCount: 0 },
+            { name: "Bianca", speakCount: 0 },
             { name: "Brigette", speakCount: 0 },
+            { name: "Caro", speakCount: 0 },
             { name: "Carina", speakCount: 0 },
             { name: "Clytie", speakCount: 0 },
+            { name: "Daman", speakCount: 0 },
             { name: "Devin", speakCount: 0 },
-            { name: "Erica", speakCount: 0 },
-            { name: "Evangelina", speakCount: 0 },
+            { name: "Erin", speakCount: 0 },
+            { name: "Eva", speakCount: 0 },
             { name: "Gabriela", speakCount: 0 },
             { name: "Hailey", speakCount: 0 },
             { name: "Holly", speakCount: 0 },
             { name: "Jonah", speakCount: 0 },
-            { name: "Juliet", speakCount: 0 },
             { name: "Katherine", speakCount: 0 },
             { name: "Kavya", speakCount: 0 },
             { name: "Lucia", speakCount: 0 },
             { name: "Melany", speakCount: 0 },
             { name: "Rachel", speakCount: 0 },
-            { name: "Robert", speakCount: 0 },
             { name: "Ryn", speakCount: 0 },
+            { name: "Sarah", speakCount: 0 },
             { name: "Snigdha", speakCount: 0 },
             { name: "Svetlana", speakCount: 0 },
             { name: "Ximena", speakCount: 0 }
@@ -779,13 +840,14 @@
         const memberGroups = {
             "core": ["Aidan", "Rachel", "Hailey", "Robert", "Snigdha"],
             "asn": ["Hailey", "Alyssa", "Ryn", "Aditi", "Holly"],
-            "cpp": ["Rachel", "Kavya", "Gabriela", "Melany", "Evangelina"],
+            "cpp": ["Rachel", "Kavya", "Gabriela", "Melany", "Eva"],
             "finance": ["Snigdha", "Devin", "Ariel", "Carina", "Lucia"],
-            "soa": ["Aidan", "Anna", "Juliet", "Ximena", "Erica"],
-            "tac": ["Robert", "Clytie", "Katherine", "Svetlana", "Brigette"]
+            "soa": ["Aidan", "Anna💅👑", "Ximena", "Erin"],
+            "tac": ["Clytie", "Katherine", "Svetlana", "Brigette"]
         };
 
         let selectedFilter = "all";
+        let memberSearchQuery = "";
 
 
         let stack = [];
@@ -873,6 +935,12 @@
                 renderMembers();
             });
 
+            // Member search
+            document.getElementById('memberSearch').addEventListener('input', (e) => {
+                memberSearchQuery = e.target.value.trim();
+                renderMembers();
+            });
+
             // Keyboard shortcuts
             document.addEventListener('keydown', (e) => {
                 // Don't trigger shortcuts if user is typing in an input field
@@ -907,6 +975,14 @@
             if (selectedFilter !== "all" && memberGroups[selectedFilter]) {
                 const groupNames = memberGroups[selectedFilter];
                 filteredMembers = members.filter(member => groupNames.includes(member.name));
+            }
+
+            // Filter by search query
+            if (memberSearchQuery) {
+                const query = memberSearchQuery.toLowerCase();
+                filteredMembers = filteredMembers.filter(member =>
+                    member.name.toLowerCase().includes(query)
+                );
             }
 
             filteredMembers.forEach((member, index) => {
