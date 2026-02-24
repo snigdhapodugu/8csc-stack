@@ -811,6 +811,8 @@
             { name: "Alyssa", speakCount: 0 },
             { name: "Anna💅👑", speakCount: 0 },
             { name: "Ariel", speakCount: 0 },
+            { name: "Arabella", speakCount: 0 },
+            { name: "Alli", speakCount: 0 },
             { name: "Bianca", speakCount: 0 },
             { name: "Brigette", speakCount: 0 },
             { name: "Caro", speakCount: 0 },
@@ -838,12 +840,12 @@
 
         // Member groups - easily editable
         const memberGroups = {
-            "core": ["Aidan", "Rachel", "Hailey", "Robert", "Snigdha"],
+            "core": ["Rachel", "Hailey", "Robert", "Snigdha"],
             "asn": ["Hailey", "Alyssa", "Ryn", "Aditi", "Holly"],
             "cpp": ["Rachel", "Kavya", "Gabriela", "Melany", "Eva"],
             "finance": ["Snigdha", "Devin", "Ariel", "Carina", "Lucia"],
-            "soa": ["Aidan", "Anna💅👑", "Ximena", "Erin"],
-            "tac": ["Clytie", "Katherine", "Svetlana", "Brigette"]
+            "soa": ["Aidan", "Anna💅👑", "Ximena", "Erin", "Arabella"],
+            "tac": ["Clytie", "Katherine", "Svetlana", "Brigette", "Alli"]
         };
 
         let selectedFilter = "all";
@@ -1329,9 +1331,21 @@
                 
                 if (timerSeconds <= 0) {
                     pauseTimer();
-                    showNotification();
-                    const display = document.getElementById('timerDisplay');
-                    display.classList.add('expired');
+
+                    const wantsExtension = window.confirm(
+                        'Time is up. Does Council want to extend this speaker by 3 minutes (use a simple majority to vote yes)?'
+                    );
+
+                    if (wantsExtension) {
+                        // Reset and restart the 3-minute timer
+                        resetTimer();
+                        startTimer();
+                    } else {
+                        // Continue as usual: show time-up notification and mark timer as expired
+                        showNotification();
+                        const display = document.getElementById('timerDisplay');
+                        display.classList.add('expired');
+                    }
                 } else if (timerSeconds <= 30) {
                     const display = document.getElementById('timerDisplay');
                     display.classList.add('warning');
